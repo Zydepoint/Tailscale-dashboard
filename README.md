@@ -7,7 +7,10 @@ This is relatively a new function added by Tailscale, see: https://tailscale.com
 > [!NOTE]
 > OBS! This guide assumes you know how Tailscale, Prometheus, and Grafana works. If something is unclear, please read their documentation respectively (everything should be available there).
 >
-> It also assumes that if you self host Prometheus and Grafana, the device that hosts those systems can talk to your tailnet either via a subnet router or by being directly connected with Tailscale. 
+> It also assumes that if you self host Prometheus and Grafana, the device that hosts those systems can talk to your tailnet either via a subnet router or by being directly connected with Tailscale.
+---
+
+![Dashboard Image](https://raw.githubusercontent.com/Zydepoint/Tailscale-dashboard/refs/heads/main/tailscale-grafana%20dashboard%201.PNG)
 
 ---
 ### Tailscale
