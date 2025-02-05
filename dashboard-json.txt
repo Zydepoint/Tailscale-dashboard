@@ -37,6 +37,19 @@
   "liveNow": true,
   "panels": [
     {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 23,
+      "panels": [],
+      "title": "All stats",
+      "type": "row"
+    },
+    {
       "datasource": {
         "type": "prometheus",
         "uid": "bdystiylb8s8wb"
@@ -69,7 +82,7 @@
         "h": 4,
         "w": 12,
         "x": 0,
-        "y": 0
+        "y": 1
       },
       "id": 12,
       "options": {
@@ -189,7 +202,7 @@
         "h": 4,
         "w": 6,
         "x": 12,
-        "y": 0
+        "y": 1
       },
       "id": 11,
       "options": {
@@ -247,7 +260,7 @@
         "h": 4,
         "w": 6,
         "x": 18,
-        "y": 0
+        "y": 1
       },
       "id": 22,
       "options": {
@@ -364,7 +377,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 4
+        "y": 5
       },
       "id": 10,
       "options": {
@@ -465,15 +478,11 @@
           },
           "mappings": [],
           "thresholds": {
-            "mode": "absolute",
+            "mode": "percentage",
             "steps": [
               {
                 "color": "dark-red",
                 "value": null
-              },
-              {
-                "color": "#646464",
-                "value": 1
               }
             ]
           },
@@ -505,8 +514,17 @@
               {
                 "id": "color",
                 "value": {
-                  "mode": "continuous-reds"
+                  "mode": "thresholds",
+                  "seriesBy": "max"
                 }
+              },
+              {
+                "id": "custom.gradientMode",
+                "value": "scheme"
+              },
+              {
+                "id": "custom.fillOpacity",
+                "value": 25
               }
             ]
           },
@@ -548,7 +566,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 4
+        "y": 5
       },
       "id": 8,
       "options": {
@@ -607,7 +625,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 12
+        "y": 13
       },
       "id": 15,
       "panels": [],
@@ -697,7 +715,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 13
+        "y": 14
       },
       "id": 6,
       "options": {
@@ -820,7 +838,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 13
+        "y": 14
       },
       "id": 17,
       "options": {
@@ -867,7 +885,7 @@
         "h": 4,
         "w": 24,
         "x": 0,
-        "y": 21
+        "y": 22
       },
       "id": 21,
       "options": {
@@ -888,7 +906,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 25
+        "y": 26
       },
       "id": 16,
       "panels": [],
@@ -978,7 +996,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 26
+        "y": 27
       },
       "id": 18,
       "options": {
@@ -1125,7 +1143,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 26
+        "y": 27
       },
       "id": 19,
       "options": {
@@ -1175,7 +1193,7 @@
         "h": 4,
         "w": 24,
         "x": 0,
-        "y": 34
+        "y": 35
       },
       "id": 20,
       "options": {
@@ -1230,9 +1248,9 @@
       {
         "allValue": "",
         "current": {
-          "selected": true,
-          "text": "ts-tailnet-sr1:5252",
-          "value": "ts-tailnet-sr1:5252"
+          "selected": false,
+          "text": "All",
+          "value": "$__all"
         },
         "datasource": {
           "type": "prometheus",
@@ -1260,13 +1278,13 @@
     ]
   },
   "time": {
-    "from": "now-2d",
+    "from": "now-24h",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "browser",
   "title": "Tailscale - VPN",
   "uid": "de9fpk1payv40c",
-  "version": 55,
+  "version": 57,
   "weekStart": ""
 }
