@@ -10,7 +10,7 @@ This is relatively a new function added by Tailscale, see: https://tailscale.com
 > It also assumes that if you self host Prometheus and Grafana, the device that hosts those systems can talk to your tailnet either via a subnet router or by being directly connected with Tailscale.
 ---
 
-![Dashboard Image](https://raw.githubusercontent.com/Zydepoint/Tailscale-dashboard/refs/heads/main/tailscale-grafana%20dashboard%201.PNG)
+![Dashboard Image](https://raw.githubusercontent.com/Zydepoint/Tailscale-dashboard/refs/heads/main/ts-grafana-dashboard-1.PNG)
 
 ---
 ### Tailscale
