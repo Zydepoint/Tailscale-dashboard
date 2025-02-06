@@ -27,7 +27,7 @@ This is a relatively new function added by Tailscale, see: https://tailscale.com
            - '100.123.123.124:5252'
 ```
 > [!NOTE]
-> If you self host Pi-hole or any other DNS, i suggest you create an A record for the Tailscale IPs of your devices. If prometheus uses the Pi-hole as DNS, then you can instead input the DNS hostnames of the devices under `targets:`. Then it is easier to differentiate between your devices when selecting which one you want to see stats from in Grafana.
+> If you self host Pi-hole or any other DNS, i suggest you create an A record for the Tailscale IPs of your devices. If prometheus uses the Pi-hole as DNS, you can instead input the DNS hostnames of the devices under `targets:`. This makes it easier to differentiate between your devices when selecting which one you want to see stats from in Grafana, otherwise you will have to remember the IP addresses.
 
 2. Go to your Prometheus instance via your browser and see if the job is up or down. If UP, then you've successfully scraped the metrics. If it's down, then you need to check every step and make sure that the Prometheus instance is able to talk to your tailnet devices.
 
