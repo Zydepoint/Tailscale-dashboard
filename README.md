@@ -2,7 +2,7 @@
 
 This is a guide showing how you can expose metrics from certain devices on your tailnet, and then get them visualized in Grafana with the help of Prometheus. 
 
-This is relatively a new function added by Tailscale, see: https://tailscale.com/kb/1482/client-metrics. With this, you can visualize all traffic that goes through tailscale, aswell as how many routes are advertised and approved.
+This is a relatively new function added by Tailscale, see: https://tailscale.com/kb/1482/client-metrics. With this, you can visualize all traffic that goes through tailscale, aswell as how many routes are advertised and approved.
 
 > [!NOTE]
 > OBS! This guide assumes you know how Tailscale, Prometheus, and Grafana works. If something is unclear, please read their documentation respectively (everything should be available there).
