@@ -1,6 +1,6 @@
 # Tailscale VPN - Grafana dashboard
 
-This is guide showing how you can expose metrics from certain devices on your tailnet, and then get them visualized in Grafana with the help of Prometheus. 
+This is a guide showing how you can expose metrics from certain devices on your tailnet, and then get them visualized in Grafana with the help of Prometheus. 
 
 This is relatively a new function added by Tailscale, see: https://tailscale.com/kb/1482/client-metrics. With this, you can visualize all traffic that goes through tailscale, aswell as how many routes are advertised and approved.
 
