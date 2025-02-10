@@ -168,6 +168,7 @@
           }
         }
       ],
+      "transparent": true,
       "type": "stat"
     },
     {
@@ -249,6 +250,7 @@
           }
         }
       ],
+      "transparent": true,
       "type": "stat"
     },
     {
@@ -273,6 +275,7 @@
         "mode": "markdown"
       },
       "pluginVersion": "11.2.0",
+      "transparent": true,
       "type": "text"
     },
     {
@@ -390,7 +393,7 @@
           ],
           "displayMode": "table",
           "placement": "bottom",
-          "showLegend": true
+          "showLegend": false
         },
         "tooltip": {
           "mode": "multi",
@@ -406,9 +409,12 @@
           },
           "disableTextWrap": false,
           "editorMode": "code",
-          "expr": "sum by (instance) (\r\n  rate(tailscaled_inbound_packets_total{job=\"$job\", instance=~\"$instance\", path=~\"direct_.*\"}[$__rate_interval])\r\n)*8",
+          "exemplar": false,
+          "expr": "sum by(instance) (rate(tailscaled_inbound_bytes_total{job=\"$job\", instance=~\"$instance\", path=~\"direct_.*\"}[2m])) * 8",
+          "format": "time_series",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
+          "instant": false,
           "legendFormat": "{{instance}} RX {{path}}",
           "range": true,
           "refId": "A",
@@ -420,7 +426,7 @@
             "uid": "bdystiylb8s8wb"
           },
           "editorMode": "code",
-          "expr": "sum by (instance) (\r\n  rate(tailscaled_outbound_packets_total{job=\"$job\", instance=~\"$instance\", path=~\"direct_.*\"}[$__rate_interval])\r\n)*8",
+          "expr": "sum by (instance) (\r\n  rate(tailscaled_outbound_bytes_total{job=\"$job\", instance=~\"$instance\", path=~\"direct_.*\"}[2m])\r\n)*8",
           "hide": false,
           "instant": false,
           "legendFormat": "{{instance}} TX {{path}}",
@@ -428,7 +434,8 @@
           "refId": "B"
         }
       ],
-      "title": "All Traffic",
+      "title": "Traffic Summary",
+      "transparent": true,
       "type": "timeseries"
     },
     {
@@ -578,7 +585,7 @@
           ],
           "displayMode": "table",
           "placement": "bottom",
-          "showLegend": true
+          "showLegend": false
         },
         "tooltip": {
           "mode": "multi",
@@ -594,7 +601,7 @@
           },
           "disableTextWrap": false,
           "editorMode": "code",
-          "expr": "rate(tailscaled_inbound_dropped_packets_total{job=\"$job\", instance=~\"$instance\"}[$__rate_interval])",
+          "expr": "rate(tailscaled_inbound_dropped_packets_total{job=\"$job\", instance=~\"$instance\"}[2m])",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
           "legendFormat": "{{instance}} RX {{reason}}",
@@ -608,7 +615,7 @@
             "uid": "bdystiylb8s8wb"
           },
           "editorMode": "code",
-          "expr": "rate(tailscaled_outbound_dropped_packets_total{job=\"$job\", instance=~\"$instance\"}[$__rate_interval])",
+          "expr": "rate(tailscaled_outbound_dropped_packets_total{job=\"$job\", instance=~\"$instance\"}[2m])",
           "hide": false,
           "instant": false,
           "legendFormat": "{{instance}} TX {{reason}}",
@@ -617,6 +624,7 @@
         }
       ],
       "title": "Errors (TX/RX)",
+      "transparent": true,
       "type": "timeseries"
     },
     {
@@ -638,7 +646,7 @@
         "type": "prometheus",
         "uid": "bdystiylb8s8wb"
       },
-      "description": "Traffic from direct peer-to-peer connections.",
+      "description": "Traffic from direct peer-to-peer connections.\n",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -691,7 +699,7 @@
               }
             ]
           },
-          "unit": "pps"
+          "unit": "bps"
         },
         "overrides": [
           {
@@ -743,7 +751,7 @@
           },
           "disableTextWrap": false,
           "editorMode": "code",
-          "expr": "sum by (instance) (\r\n  rate(tailscaled_inbound_packets_total{job=\"$job\", instance=~\"$instance\", path=~\"direct_.*\"}[$__rate_interval])\r\n)",
+          "expr": "sum by (instance) (\r\n  rate(tailscaled_inbound_bytes_total{job=\"$job\", instance=~\"$instance\", path=~\"direct_.*\"}[2m])\r\n)*8",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
           "legendFormat": "{{instance}} RX {{path}}",
@@ -753,6 +761,7 @@
         }
       ],
       "title": "Inbound",
+      "transparent": true,
       "type": "timeseries"
     },
     {
@@ -814,7 +823,7 @@
               }
             ]
           },
-          "unit": "pps"
+          "unit": "bps"
         },
         "overrides": [
           {
@@ -865,7 +874,7 @@
             "uid": "bdystiylb8s8wb"
           },
           "editorMode": "code",
-          "expr": "sum by (instance) (\r\n  rate(tailscaled_outbound_packets_total{job=\"$job\", instance=~\"$instance\", path=~\"direct_.*\"}[$__rate_interval])\r\n)",
+          "expr": "sum by (instance) (\r\n  rate(tailscaled_outbound_bytes_total{job=\"$job\", instance=~\"$instance\", path=~\"direct_.*\"}[2m])\r\n)*8",
           "hide": false,
           "instant": false,
           "legendFormat": "{{instance}} TX {{path}}",
@@ -874,31 +883,8 @@
         }
       ],
       "title": "Outbound",
+      "transparent": true,
       "type": "timeseries"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "bdystiylb8s8wb"
-      },
-      "gridPos": {
-        "h": 4,
-        "w": 24,
-        "x": 0,
-        "y": 22
-      },
-      "id": 21,
-      "options": {
-        "code": {
-          "language": "plaintext",
-          "showLineNumbers": false,
-          "showMiniMap": false
-        },
-        "content": "### P2P\n\nTailscale is an encrypted point-to-point VPN service that streamlines connecting devices and services securely across different networks with WireGuard.\n\nTailscale docs: https://tailscale.com/kb/1151/what-is-tailscale",
-        "mode": "markdown"
-      },
-      "pluginVersion": "11.2.0",
-      "type": "text"
     },
     {
       "collapsed": false,
@@ -906,7 +892,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 26
+        "y": 22
       },
       "id": 16,
       "panels": [],
@@ -919,7 +905,7 @@
         "type": "prometheus",
         "uid": "bdystiylb8s8wb"
       },
-      "description": "Traffic from relayed connections.",
+      "description": "Traffic from relayed connections. DERP (Designated Encrypted Relay for Packets) servers act as a relay server when a direct connection isn’t possible. Relay connections might result in higher latency.\n",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -972,7 +958,7 @@
               }
             ]
           },
-          "unit": "pps"
+          "unit": "bps"
         },
         "overrides": [
           {
@@ -996,7 +982,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 27
+        "y": 23
       },
       "id": 18,
       "options": {
@@ -1024,7 +1010,7 @@
           },
           "disableTextWrap": false,
           "editorMode": "code",
-          "expr": "rate(tailscaled_inbound_packets_total{job=\"$job\", instance=~\"$instance\", path=\"derp\"}[$__rate_interval])",
+          "expr": "rate(tailscaled_inbound_bytes_total{job=\"$job\", instance=~\"$instance\", path=\"derp\"}[2m])*8",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
           "legendFormat": "{{instance}} RX {{path}}",
@@ -1034,6 +1020,7 @@
         }
       ],
       "title": "Inbound",
+      "transparent": true,
       "type": "timeseries"
     },
     {
@@ -1042,7 +1029,7 @@
         "type": "prometheus",
         "uid": "bdystiylb8s8wb"
       },
-      "description": "Traffic to relayed connections.",
+      "description": "Traffic from relayed connections. DERP (Designated Encrypted Relay for Packets) servers act as a relay server when a direct connection isn’t possible.  Relay connections might result in higher latency.",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1095,7 +1082,7 @@
               }
             ]
           },
-          "unit": "pps"
+          "unit": "bps"
         },
         "overrides": [
           {
@@ -1143,7 +1130,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 27
+        "y": 23
       },
       "id": 19,
       "options": {
@@ -1171,7 +1158,7 @@
           },
           "disableTextWrap": false,
           "editorMode": "code",
-          "expr": "rate(tailscaled_outbound_packets_total{job=\"$job\", instance=~\"$instance\", path=\"derp\"}[$__rate_interval])",
+          "expr": "rate(tailscaled_outbound_bytes_total{job=\"$job\", instance=~\"$instance\", path=\"derp\"}[2m])*8",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
           "legendFormat": "{{instance}} TX {{path}}",
@@ -1181,32 +1168,8 @@
         }
       ],
       "title": "Outbound",
+      "transparent": true,
       "type": "timeseries"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "bdystiylb8s8wb"
-      },
-      "description": "",
-      "gridPos": {
-        "h": 4,
-        "w": 24,
-        "x": 0,
-        "y": 35
-      },
-      "id": 20,
-      "options": {
-        "code": {
-          "language": "plaintext",
-          "showLineNumbers": false,
-          "showMiniMap": false
-        },
-        "content": "### DERP\n\nDERP (Designated Encrypted Relay for Packets) servers manage device connections and NAT traversal. They serve two primary purposes: negotiating direct connections between tailnet devices and serving as a relay server when a direct connection isn’t possible.\n\nTailscale docs: https://tailscale.com/kb/1232/derp-servers",
-        "mode": "markdown"
-      },
-      "pluginVersion": "11.2.0",
-      "type": "text"
     }
   ],
   "refresh": "1m",
@@ -1248,9 +1211,9 @@
       {
         "allValue": "",
         "current": {
-          "selected": false,
-          "text": "All",
-          "value": "$__all"
+          "selected": true,
+          "text": "mlv-gw1-swe.ts.zyde.se:5252",
+          "value": "mlv-gw1-swe.ts.zyde.se:5252"
         },
         "datasource": {
           "type": "prometheus",
@@ -1278,13 +1241,13 @@
     ]
   },
   "time": {
-    "from": "now-24h",
+    "from": "now-12h",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "browser",
   "title": "Tailscale - VPN",
   "uid": "de9fpk1payv40c",
-  "version": 57,
+  "version": 69,
   "weekStart": ""
 }
