@@ -16,7 +16,7 @@
     ]
   },
   "description": "Tailscale - Point to point VPN. Shows traffic and some other metrics. dashboard retrieved from random guy on the internet.",
-  "editable": true,
+  "editable": false,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
   "id": 68,
@@ -1212,8 +1212,8 @@
         "allValue": "",
         "current": {
           "selected": true,
-          "text": "mlv-gw1-swe.ts.zyde.se:5252",
-          "value": "mlv-gw1-swe.ts.zyde.se:5252"
+          "text": "All",
+          "value": "$__all"
         },
         "datasource": {
           "type": "prometheus",
@@ -1248,6 +1248,6 @@
   "timezone": "browser",
   "title": "Tailscale - VPN",
   "uid": "de9fpk1payv40c",
-  "version": 69,
+  "version": 71,
   "weekStart": ""
 }
